@@ -1,0 +1,56 @@
+<div class="col-md-4">
+  <%= form_with(model: exam_date) do |form| %>
+    <% if exam_date.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(exam_date.errors.count, "error") %> prohibited this exam_date from being saved:</h2>
+
+        <ul>
+          <% exam_date.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <div class="field">
+        <%= form.label :student_name %>
+        <%= form.text_field :student_name, class:"form-control" %>
+      </div>
+
+      <div class="field">
+        <%= form.label :school_name %>
+        <%= form.text_field :school_name, class:"form-control"  %>
+      </div>
+
+      <div class="field">
+        <%= form.label :subject %>
+        <%= form.text_field :subject, class:"form-control"  %>
+      </div>
+
+      <div class="field">
+        <%= form.label :date %>
+        <%= form.text_field :date,
+        data: {
+          controller: "flatpickr",
+          flatpickr_date_format: "d-m-Y",
+          flatpickr_min_date: Time.zone.now}
+        %>
+      </div>
+      
+      <div class="field">
+        <%= form.label :images %>
+        <%= form.file_field :images, multiple: true %>
+      </div>
+      
+      <div class="field">
+        <%= form.label :additional_information %>
+        <%= form.text_area :additional_information, class:"form-control"  %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    </div>
+  <% end %>
+</div>

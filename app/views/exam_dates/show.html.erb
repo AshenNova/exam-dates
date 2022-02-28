@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Student name:</strong>
+  <%= @exam_date.student_name %>
+</p>
+
+<p>
+  <strong>School name:</strong>
+  <%= @exam_date.school_name %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @exam_date.subject %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @exam_date.date %>
+</p>
+
+<p>
+  <strong>Syllabus</strong>
+    <% if @exam_date.images.attached? %>
+      <% @exam_date.images.each do |image| %>
+        <%= image_tag image, width: "100px" %>
+      <% end %>
+    <% end %>
+</p>
+
+<p>
+  <strong>Additional information:</strong>
+  <%= @exam_date.additional_information %>
+</p>
+
+<%= link_to 'Edit', edit_exam_date_path(@exam_date) %> |
+<%= link_to 'Back', exam_dates_path %>

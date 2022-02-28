@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Exam Dates</h1>
+<p>Today: <%= @date_today %></p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Student name</th>
+      <th><%= link_to "School name", :sort => "school_name" %></th>
+      <th>Subject</th>
+      <th>Date</th>
+      <th>Syllabus</th>
+      <th><%= link_to "Days to", :sort => "days_to" %> </th>
+      <th>Additional information</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @exam_dates.each do |exam_date| %>
+      <tr>
+        <td><%= exam_date.student_name %></td>
+        <td><%= exam_date.school_name %></td>
+        <td><%= exam_date.subject %></td>
+        <td><%= exam_date.date %></td>
+        <td><%= "✔️" if exam_date.images.attached? %></td>
+        <td><%= (exam_date.date - @date_today).to_i %>
+        <td><%= exam_date.additional_information %></td>
+        <td><%= link_to 'Show', exam_date %></td>
+        <td><%= link_to 'Edit', edit_exam_date_path(exam_date) %></td>
+        <td><%= link_to 'Destroy', exam_date, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Exam Date', new_exam_date_path %>
