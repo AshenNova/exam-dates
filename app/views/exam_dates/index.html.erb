@@ -1,7 +1,7 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Exam Dates</h1>
 <p>Today: <%= @date_today %></p>
+<%= link_to 'New Exam Date', new_exam_date_path, class:"btn btn-success text-white" %>
+</br>
 <table class="table">
   <thead>
     <tr>
@@ -27,13 +27,11 @@
         <td><%= (exam_date.date - @date_today).to_i %>
         <td><%= exam_date.additional_information %></td>
         <td><%= link_to 'Show', exam_date %></td>
-        <td><%= link_to 'Edit', edit_exam_date_path(exam_date) %></td>
-        <td><%= link_to 'Destroy', exam_date, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if user_signed_in? %>
+          <td><%= link_to 'Edit', edit_exam_date_path(exam_date) %></td>
+          <td><%= link_to 'Destroy', exam_date, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Exam Date', new_exam_date_path %>

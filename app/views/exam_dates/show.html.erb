@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Student name:</strong>
   <%= @exam_date.student_name %>
@@ -33,6 +31,8 @@
   <strong>Additional information:</strong>
   <%= @exam_date.additional_information %>
 </p>
-
-<%= link_to 'Edit', edit_exam_date_path(@exam_date) %> |
-<%= link_to 'Back', exam_dates_path %>
+<% if user_signed_in? %>
+  <%= link_to 'Edit', edit_exam_date_path(@exam_date) %> |
+<% end %>
+<%= link_to 'Back', exam_dates_path %> |
+<%= link_to 'Create', new_exam_date_path, class:"btn btn-success text-white" %>

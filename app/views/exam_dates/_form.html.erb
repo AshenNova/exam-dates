@@ -14,22 +14,22 @@
 
     <div class="form-group">
       <div class="field">
-        <%= form.label :student_name %>
+        <%= form.label :student_name %>:
         <%= form.text_field :student_name, class:"form-control" %>
       </div>
 
       <div class="field">
-        <%= form.label :school_name %>
+        <%= form.label :school_name %>:
         <%= form.text_field :school_name, class:"form-control"  %>
       </div>
 
       <div class="field">
-        <%= form.label :subject %>
-        <%= form.text_field :subject, class:"form-control"  %>
+        <%= form.label :subject %>:
+        <%= form.select :desired_attribute, ['Math', 'Science']%>
       </div>
 
       <div class="field">
-        <%= form.label :date %>
+        <%= form.label :date %>:
         <%= form.text_field :date,
         data: {
           controller: "flatpickr",
@@ -39,17 +39,18 @@
       </div>
       
       <div class="field">
-        <%= form.label :images %>
+        <%= form.label :images %>:
+        <p> For syllabus tested</p>
         <%= form.file_field :images, multiple: true %>
       </div>
       
       <div class="field">
-        <%= form.label :additional_information %>
-        <%= form.text_area :additional_information, class:"form-control"  %>
+        <%= form.label :additional_information %>:
+        <%= form.text_area :additional_information, class:"form-control", placeholder:"Can be left blank"  %>
       </div>
 
       <div class="actions">
-        <%= form.submit %>
+        <%= form.submit class:"btn btn-success" %>
       </div>
     </div>
   <% end %>
