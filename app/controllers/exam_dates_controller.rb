@@ -21,7 +21,15 @@ class ExamDatesController < ApplicationController
 
   # GET /exam_dates/new
   def new
-    @exam_date = ExamDate.new
+    if params[:clone_id]
+      @exam_date = ExamDate.new
+      clone_exam = ExamDate.find(params[:clone_id])
+      @exam_date.student_name = clone_exam.student_name
+      @exam_date.school_name = clone_exam.school_name
+      
+    else
+      @exam_date = ExamDate.new
+    end
   end
 
   # GET /exam_dates/1/edit
