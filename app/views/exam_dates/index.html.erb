@@ -25,7 +25,7 @@
           <td><%= exam_date.subject %></td>
           <td><%= exam_date.date %></td>
           <td><%= "✔️" if exam_date.images.attached? %></td>
-          <td><%= (exam_date.date - @date_today).to_i %>
+          <td><%= ((exam_date.date - @date_today).to_i == 1) ? "Tomorrow" : (exam_date.date - @date_today).to_i  %>
           <td><%= exam_date.additional_information.truncate(20) %></td>
           <td><%= link_to 'Show', exam_date %></td>
           <% if user_signed_in? %>
