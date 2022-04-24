@@ -1,6 +1,6 @@
 class ExamDatesController < ApplicationController
   require 'date'
-  Time.zone = 'Singapore'
+  # Time.zone = 'Singapore'
   before_action :set_exam_date, only: %i[ show edit update destroy ]
 
 
