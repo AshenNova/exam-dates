@@ -6,7 +6,7 @@ class ExamDatesController < ApplicationController
 
   # GET /exam_dates or /exam_dates.json
   def index
-    @date_today = Date.today
+    @date_today = Date.current
     if params[:sort] == "days_to"
      @exam_dates = ExamDate.all.sort_by{|exam_date| (exam_date.date - @date_today).to_i }
     elsif params[:sort] != "days_to"
