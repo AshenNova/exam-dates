@@ -9,11 +9,13 @@ class ExamDatesController < ApplicationController
     @date_today = Date.current
     if params[:sort] == "days_to"
      @exam_dates = ExamDate.all.sort_by{|exam_date| (exam_date.date - @date_today).to_i }
-    elsif params[:sort] != "days_to"
-      @exam_dates = ExamDate.order(params[:sort])
-    else
-     @exam_dates = ExamDate.all
     end
+    if params[:sort] == "school_name"
+      @exam_dates = ExamDate.order(school_name: :asc)
+    else
+     @exam_dates = ExamDate.order(date: :asc)
+    end
+    
   end
 
   # GET /exam_dates/1 or /exam_dates/1.json
