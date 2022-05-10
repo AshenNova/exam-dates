@@ -14,8 +14,12 @@
           <li class="nav-item">
            <%= link_to "Sign Out",  destroy_user_session_path, method: :delete, class:"nav-link active" %>
           </li>
-        <% end %>
+        <% end %>  
       </ul>
+      <form class="d-flex" action="/search">
+        <input class="form-control me-2" name="q" type="text" placeholder="Enter Student's Name">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     </div>
   </div>
 </nav>

@@ -7,13 +7,14 @@ class ExamDatesController < ApplicationController
   # GET /exam_dates or /exam_dates.json
   def index
     @date_today = Date.current
+    @exam_dates = ExamDate.order(date: :asc)
+
     if params[:sort] == "days_to"
      @exam_dates = ExamDate.all.sort_by{|exam_date| (exam_date.date - @date_today).to_i }
     end
+
     if params[:sort] == "school_name"
-      @exam_dates = ExamDate.order(school_name: :asc)
-    else
-     @exam_dates = ExamDate.order(date: :asc)
+      @exam_dates = ExamDate.order(school_name: :asc)     
     end
     
   end
@@ -77,6 +78,11 @@ class ExamDatesController < ApplicationController
     end
   end
 
+  def search
+    @date_today = Date.current
+    @exam_dates = ExamDate.where("student_name LIKE ?", "%" + params[:q] + "%")
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_exam_date
