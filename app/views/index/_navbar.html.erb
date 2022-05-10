@@ -5,7 +5,11 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <form class="d-flex" action="/search">
+        <input class="form-control me-2" name="q" type="text" placeholder="Enter Student's Name" autofocus>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <% if !user_signed_in? %>
           <li class="nav-item">
             <%= link_to "For Admin",  user_session_path, class:"nav-link active" %>
@@ -16,10 +20,7 @@
           </li>
         <% end %>  
       </ul>
-      <form class="d-flex" action="/search">
-        <input class="form-control me-2" name="q" type="text" placeholder="Enter Student's Name">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+     
     </div>
   </div>
 </nav>
