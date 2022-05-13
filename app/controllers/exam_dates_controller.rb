@@ -80,7 +80,7 @@ class ExamDatesController < ApplicationController
 
   def search
     @date_today = Date.current
-    @exam_dates = ExamDate.where("student_name LIKE ?", "%" + params[:q] + "%")
+    @exam_dates = ExamDate.where("student_name LIKE ?", "%" + (params[:q]).downcase + "%")
   end
   
   private
